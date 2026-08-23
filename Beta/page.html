@@ -392,10 +392,8 @@
         <main class="flex-1 w-full max-w-3xl mx-auto flex flex-col gap-4 pt-24 pb-8 px-4 sm:px-8">
             
             <header class="text-center flex flex-col items-center gap-3 mb-2">
-                <!-- آیکون جدید و کاملا تراز داشبورد برای هدر -->
-                <div class="w-20 h-20 app-icon bg-gradient-to-br from-blue-500 to-indigo-600 shadow-xl shadow-blue-600/20 rounded-[24px]">
-                    <i data-lucide="layout-dashboard" class="w-10 h-10 text-white stroke-[2.2]"></i>
-                </div>
+                <!-- تصویر جدید هدر -->
+                <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-20 h-20 rounded-[24px] shadow-xl shadow-zinc-200 dark:shadow-black/40 object-cover border border-zinc-200/50 dark:border-zinc-700/50">
                 <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900 dark:text-white mt-1">پورتال و مخزن اصلی</h1>
                 <p class="text-[11px] sm:text-xs font-medium max-w-sm mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
                     دسترسی یکپارچه به تمامی محصولات، آموزش‌ها، خدمات اسپانسرشیپ و تیم پشتیبانی در یک پلتفرم جامع.
@@ -403,7 +401,7 @@
             </header>
 
             <!-- اطلاعیه قرمز -->
-            <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer base-card p-3.5 flex items-center justify-between transition-all group border-red-300 dark:border-red-900/50" style="background-color: rgba(239, 68, 68, 0.08); animation-delay: 0.05s;">
+            <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer base-card p-3.5 flex items-center justify-between transition-all group border-red-300 dark:border-red-900/50 -mb-1" style="background-color: rgba(239, 68, 68, 0.08); animation-delay: 0.05s;">
                 <div class="flex items-center gap-3 min-w-0">
                     <div class="shrink-0 w-10 h-10 app-icon bg-red-500 shadow-md shadow-red-500/20 rounded-xl">
                         <i data-lucide="bell-ring" class="w-5 h-5 animate-pulse stroke-[2.2] text-white"></i>
@@ -416,19 +414,58 @@
                 <i data-lucide="chevron-left" class="w-4 h-4 text-red-500 group-hover:-translate-x-1 transition-transform shrink-0"></i>
             </div>
 
-            <div id="cardsContainer" class="mt-1">
-                
-                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up portal-card base-card group hover:-translate-y-0.5" style="animation-delay: 0.1s;">
-                    <div class="app-icon bg-gradient-to-br from-blue-400 to-blue-600 group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all">
-                        <i data-lucide="shopping-bag" class="stroke-[2.2]"></i>
+            <!-- کارت بازشونده پیشنهاد ویژه (طلایی) -->
+            <div onclick="toggleSpecialOffers()" class="animate-fade-in-up w-full cursor-pointer base-card p-3.5 flex items-center justify-between transition-all group border-amber-300 dark:border-amber-900/50 -mb-1" style="background-color: rgba(245, 158, 11, 0.08); animation-delay: 0.07s;">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="shrink-0 w-10 h-10 app-icon bg-amber-500 shadow-md shadow-amber-500/20 rounded-xl">
+                        <i data-lucide="gift" class="w-5 h-5 animate-pulse stroke-[2.2] text-white"></i>
                     </div>
-                    <div class="card-content">
-                        <div class="card-title-wrapper">
-                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">فروشگاه اصلی</h3>
+                    <div class="flex flex-col min-w-0">
+                        <h3 class="text-xs sm:text-[13px] font-bold text-amber-700 dark:text-amber-400 truncate mb-0.5">پیشنهاد ویژه</h3>
+                        <p class="text-[10px] font-medium text-amber-600/90 dark:text-amber-400/80 truncate">نمایش خدمات اختصاصی و بونوس‌ها</p>
+                    </div>
+                </div>
+                <i id="specialOffersChevron" data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0"></i>
+            </div>
+
+            <!-- دکمه‌های دسترسی سریع (مخفی به صورت پیش‌فرض، کوچک و ۴ تایی) -->
+            <div id="specialOffersContainer" class="hidden animate-fade-in-up w-full" style="animation-delay: 0.05s;">
+                <div class="grid grid-cols-4 gap-2.5 mt-0.5">
+                    <!-- بات بیلدر -->
+                    <a href="#" class="base-card py-3 flex flex-col items-center justify-center gap-2 text-center group hover:-translate-y-1 transition-all">
+                        <div class="w-8 h-8 rounded-[12px] bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform shrink-0">
+                            <i data-lucide="bot" class="w-4 h-4 text-white stroke-[2.5]"></i>
                         </div>
-                        <p class="card-desc">سفارش و خرید مستقیم، امن و فوری تمامی خدمات</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                        <h3 class="text-[9px] font-black text-zinc-900 dark:text-white leading-tight">بات بیلدر</h3>
+                    </a>
+
+                    <!-- بات ساز -->
+                    <a href="#" class="base-card py-3 flex flex-col items-center justify-center gap-2 text-center group hover:-translate-y-1 transition-all">
+                        <div class="w-8 h-8 rounded-[12px] bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-md shadow-cyan-500/20 group-hover:scale-110 transition-transform shrink-0">
+                            <i data-lucide="cpu" class="w-4 h-4 text-white stroke-[2.5]"></i>
+                        </div>
+                        <h3 class="text-[9px] font-black text-zinc-900 dark:text-white leading-tight">بات ساز</h3>
+                    </a>
+
+                    <!-- دریافت بونوس -->
+                    <a href="#" class="base-card py-3 flex flex-col items-center justify-center gap-2 text-center group hover:-translate-y-1 transition-all">
+                        <div class="w-8 h-8 rounded-[12px] bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-110 transition-transform shrink-0">
+                            <i data-lucide="coins" class="w-4 h-4 text-white stroke-[2.5]"></i>
+                        </div>
+                        <h3 class="text-[9px] font-black text-zinc-900 dark:text-white leading-tight">دریافت بونوس</h3>
+                    </a>
+
+                    <!-- ساخت پنل -->
+                    <a href="#" class="base-card py-3 flex flex-col items-center justify-center gap-2 text-center group hover:-translate-y-1 transition-all">
+                        <div class="w-8 h-8 rounded-[12px] bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center shadow-md shadow-purple-500/20 group-hover:scale-110 transition-transform shrink-0">
+                            <i data-lucide="server" class="w-4 h-4 text-white stroke-[2.5]"></i>
+                        </div>
+                        <h3 class="text-[9px] font-black text-zinc-900 dark:text-white leading-tight">ساخت پنل</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div id="cardsContainer" class="mt-1">
                 </a>
 
                 <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up portal-card base-card group hover:-translate-y-0.5" style="animation-delay: 0.15s;">
@@ -617,6 +654,19 @@
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
                 m.querySelector('div').removeAttribute('data-open');
+            }
+        }
+
+        // --- منوی آکاردئونی پیشنهاد ویژه ---
+        function toggleSpecialOffers() {
+            const container = document.getElementById('specialOffersContainer');
+            const chevron = document.getElementById('specialOffersChevron');
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                container.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
             }
         }
 
